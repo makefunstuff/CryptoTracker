@@ -10,8 +10,8 @@ import UIKit
 
 class CryptoTableViewController: UITableViewController, CoinDataDelegate {
   override func viewDidLoad() {
-    CoinData.shared.getPrices()
     CoinData.shared.delegate = self
+    CoinData.shared.getPrices()
     
     super.viewDidLoad()
   }
