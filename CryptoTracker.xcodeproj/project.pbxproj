@@ -12,9 +12,11 @@
 		54A0853320E953FC008DBF95 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54A0853120E953FC008DBF95 /* LaunchScreen.storyboard */; };
 		54A0853B20E954EB008DBF95 /* CryptoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A0853A20E954EB008DBF95 /* CryptoTableViewController.swift */; };
 		54A0853D20E9567D008DBF95 /* CoinData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A0853C20E9567D008DBF95 /* CoinData.swift */; };
+		85D869EBAAE0374AE5A15C6D /* Pods_CryptoTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA8CC9EF7C68C75A645EC8DE /* Pods_CryptoTracker.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4D2437ADCC75382B0CE12438 /* Pods-CryptoTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoTracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-CryptoTracker/Pods-CryptoTracker.release.xcconfig"; sourceTree = "<group>"; };
 		54A0852520E953F8008DBF95 /* CryptoTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54A0852820E953F8008DBF95 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		54A0852F20E953FC008DBF95 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -22,6 +24,8 @@
 		54A0853420E953FC008DBF95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		54A0853A20E954EB008DBF95 /* CryptoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoTableViewController.swift; sourceTree = "<group>"; };
 		54A0853C20E9567D008DBF95 /* CoinData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinData.swift; sourceTree = "<group>"; };
+		7931235D19EF377DE60F8512 /* Pods-CryptoTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoTracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CryptoTracker/Pods-CryptoTracker.debug.xcconfig"; sourceTree = "<group>"; };
+		DA8CC9EF7C68C75A645EC8DE /* Pods_CryptoTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CryptoTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85D869EBAAE0374AE5A15C6D /* Pods_CryptoTracker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +45,8 @@
 			children = (
 				54A0852720E953F8008DBF95 /* CryptoTracker */,
 				54A0852620E953F8008DBF95 /* Products */,
+				B88453F25BF9A9B7D9AAAC2F /* Pods */,
+				70FBF0670060CA6A3171159E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +71,23 @@
 			path = CryptoTracker;
 			sourceTree = "<group>";
 		};
+		70FBF0670060CA6A3171159E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DA8CC9EF7C68C75A645EC8DE /* Pods_CryptoTracker.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B88453F25BF9A9B7D9AAAC2F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7931235D19EF377DE60F8512 /* Pods-CryptoTracker.debug.xcconfig */,
+				4D2437ADCC75382B0CE12438 /* Pods-CryptoTracker.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +95,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 54A0853720E953FC008DBF95 /* Build configuration list for PBXNativeTarget "CryptoTracker" */;
 			buildPhases = (
+				8ADB3C3EC138ED62778E984A /* [CP] Check Pods Manifest.lock */,
 				54A0852120E953F8008DBF95 /* Sources */,
 				54A0852220E953F8008DBF95 /* Frameworks */,
 				54A0852320E953F8008DBF95 /* Resources */,
+				F0BE58AF98053C544972271C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -128,6 +154,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8ADB3C3EC138ED62778E984A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CryptoTracker-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F0BE58AF98053C544972271C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-CryptoTracker/Pods-CryptoTracker-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CryptoTracker/Pods-CryptoTracker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		54A0852120E953F8008DBF95 /* Sources */ = {
@@ -270,6 +335,7 @@
 		};
 		54A0853820E953FC008DBF95 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7931235D19EF377DE60F8512 /* Pods-CryptoTracker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -288,6 +354,7 @@
 		};
 		54A0853920E953FC008DBF95 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4D2437ADCC75382B0CE12438 /* Pods-CryptoTracker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
