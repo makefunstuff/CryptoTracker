@@ -8,9 +8,16 @@
 
 import UIKit
 
-class CryptoTableViewController: UITableViewController {
+class CryptoTableViewController: UITableViewController, CoinDataDelegate {
   override func viewDidLoad() {
+    CoinData.shared.getPrices()
+    CoinData.shared.delegate = self
+    
     super.viewDidLoad()
+  }
+  
+  func newPrices() {
+    tableView.reloadData()
   }
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -21,7 +28,7 @@ class CryptoTableViewController: UITableViewController {
     let cell = UITableViewCell()
     let coin = CoinData.shared.coins[indexPath.row]
     
-    cell.textLabel?.text = coin.symbol
+    cell.textLabel?.text = "\(coin.symbol) - \(coin.price)"
     cell.imageView?.image = coin.image
     
     return cell
