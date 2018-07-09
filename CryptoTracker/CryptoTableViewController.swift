@@ -34,4 +34,11 @@ class CryptoTableViewController: UITableViewController, CoinDataDelegate {
     return cell
   }
   
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let viewController = CoinViewController()
+    viewController.coin = CoinData.shared.coins[indexPath.row]
+  
+    navigationController?.pushViewController(viewController, animated: true)
+  }
+  
 }

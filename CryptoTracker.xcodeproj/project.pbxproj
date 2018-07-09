@@ -12,6 +12,7 @@
 		54A0853320E953FC008DBF95 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54A0853120E953FC008DBF95 /* LaunchScreen.storyboard */; };
 		54A0853B20E954EB008DBF95 /* CryptoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A0853A20E954EB008DBF95 /* CryptoTableViewController.swift */; };
 		54A0853D20E9567D008DBF95 /* CoinData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A0853C20E9567D008DBF95 /* CoinData.swift */; };
+		54BCC49520F290B80019B1C8 /* CoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BCC49420F290B80019B1C8 /* CoinViewController.swift */; };
 		85D869EBAAE0374AE5A15C6D /* Pods_CryptoTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA8CC9EF7C68C75A645EC8DE /* Pods_CryptoTracker.framework */; };
 /* End PBXBuildFile section */
 
@@ -24,6 +25,7 @@
 		54A0853420E953FC008DBF95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		54A0853A20E954EB008DBF95 /* CryptoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoTableViewController.swift; sourceTree = "<group>"; };
 		54A0853C20E9567D008DBF95 /* CoinData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinData.swift; sourceTree = "<group>"; };
+		54BCC49420F290B80019B1C8 /* CoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinViewController.swift; sourceTree = "<group>"; };
 		7931235D19EF377DE60F8512 /* Pods-CryptoTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoTracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CryptoTracker/Pods-CryptoTracker.debug.xcconfig"; sourceTree = "<group>"; };
 		DA8CC9EF7C68C75A645EC8DE /* Pods_CryptoTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CryptoTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -67,6 +69,7 @@
 				54A0853120E953FC008DBF95 /* LaunchScreen.storyboard */,
 				54A0853420E953FC008DBF95 /* Info.plist */,
 				54A0853C20E9567D008DBF95 /* CoinData.swift */,
+				54BCC49420F290B80019B1C8 /* CoinViewController.swift */,
 			);
 			path = CryptoTracker;
 			sourceTree = "<group>";
@@ -182,10 +185,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-CryptoTracker/Pods-CryptoTracker-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftChart/SwiftChart.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftChart.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -202,6 +207,7 @@
 				54A0853D20E9567D008DBF95 /* CoinData.swift in Sources */,
 				54A0853B20E954EB008DBF95 /* CryptoTableViewController.swift in Sources */,
 				54A0852920E953F8008DBF95 /* AppDelegate.swift in Sources */,
+				54BCC49520F290B80019B1C8 /* CoinViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

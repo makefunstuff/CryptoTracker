@@ -38,10 +38,22 @@ class CoinData {
       self.delegate?.newPrices?()
     }
   }
+  
+  func doubleToMoneyString(double: Double) -> String {
+    let formatter = NumberFormatter()
+    formatter.locale = Locale(identifier: "fi_FI")
+    formatter.numberStyle = .currency
+    
+    guard let price = formatter.string(from: NSNumber(floatLiteral: double)) else {
+      fatalError("Could not format price")
+    }
+    return price
+  }
 }
 
 @objc protocol CoinDataDelegate : class {
   @objc optional func newPrices()
+  @objc optional func newHistory()
 }
 
 class Coin {
@@ -63,14 +75,17 @@ class Coin {
     if price == 0.0 {
       return "Loading..."
     } else {
-      let formatter = NumberFormatter()
-      formatter.locale = Locale(identifier: "fi_FI")
-      formatter.numberStyle = .currency
+      return CoinData.shared.doubleToMoneyString(double: price)
+    }
+  }
+  
+  func getHistoricalData() {
+    Alamofire.request("https://min-api.cryptocompare.com/data/histoday?fsym=\(symbol)&tsym=EUR&limit=30").responseJSON() { response in
+      guard let jsonData = response.result.value as? [String:Any] else { fatalError("Parse Error \(response.result)") }
+      guard let prices = jsonData["Data"] as? [[String:Double]] else { return }
+      self.historicalData = prices.map { $0["close"]! }
       
-      guard let price = formatter.string(from: NSNumber(floatLiteral: price)) else {
-        fatalError("Could not format price")
-      }
-      return price
+      CoinData.shared.delegate?.newHistory!()
     }
   }
 }
