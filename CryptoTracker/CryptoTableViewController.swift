@@ -16,6 +16,11 @@ class CryptoTableViewController: UITableViewController, CoinDataDelegate {
     super.viewDidLoad()
   }
   
+  override func viewWillAppear(_ animated: Bool) {
+    CoinData.shared.delegate = self
+    tableView.reloadData()
+  }
+  
   func newPrices() {
     tableView.reloadData()
   }
