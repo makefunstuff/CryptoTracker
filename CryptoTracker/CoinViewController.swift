@@ -31,34 +31,18 @@ class CoinViewController: UIViewController, CoinDataDelegate {
       view.backgroundColor = UIColor.white
       title = coin.symbol
       
-      navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editTapped))
+      navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit",
+                                                          style: .plain,
+                                                          target: self,
+                                                          action: #selector(editTapped))
       
-      chart.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: chartHeight)
+      renderChart()
+      renderImage(coin)
       
-      chart.yLabelsFormatter = { CoinData.shared.doubleToMoneyString(double: $1) }
-      chart.xLabels = [30, 25, 20, 15, 10, 5, 0]
-      chart.xLabelsFormatter = { String(Int(round(30 - $1))) + "d" }
-      view.addSubview(chart)
-      
-      let imageXPosition = view.frame.size.width / 2 - imageSize / 2
-      let imageView = UIImageView(frame: CGRect(x: imageXPosition, y: chartHeight, width: imageSize, height: imageSize))
-      imageView.image = coin.image
-      view.addSubview(imageView)
-      
-      priceLabel.frame = CGRect(x: 0, y: chartHeight + imageSize, width: view.frame.size.width, height: priceLabelHeight)
-      priceLabel.textAlignment = .center
-      view.addSubview(priceLabel)
-      
-      youOwnLabel.frame = CGRect(x: 0, y: chartHeight + imageSize + priceLabelHeight * 2, width: view.frame.size.width, height: priceLabelHeight)
-      youOwnLabel.textAlignment = .center
-      youOwnLabel.font = UIFont.boldSystemFont(ofSize: 20.0)
-      view.addSubview(youOwnLabel)
-      
-      worthLabel.frame = CGRect(x: 0, y: chartHeight + imageSize + priceLabelHeight * 3, width: view.frame.size.width, height: priceLabelHeight)
-      worthLabel.textAlignment = .center
-      worthLabel.font = UIFont.boldSystemFont(ofSize: 20.0)
-      view.addSubview(worthLabel)
-      
+      putLabel(priceLabel, chartHeight + imageSize)
+      putLabel(youOwnLabel, chartHeight + imageSize + priceLabelHeight * 2)
+      putLabel(worthLabel, chartHeight + imageSize + priceLabelHeight * 3)
+
       coin.getHistoricalData()
       newPrices()
     }
@@ -100,4 +84,27 @@ class CoinViewController: UIViewController, CoinDataDelegate {
       worthLabel.text = coin.amountAsString()
     }
   }
+  
+  private func putLabel(_ label: UILabel, _ position: CGFloat) {
+    label.frame = CGRect(x: 0, y: position, width: view.frame.size.width, height: priceLabelHeight)
+    label.textAlignment = .center
+    view.addSubview(label)
+  }
+  
+  private func renderChart() {
+    chart.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: chartHeight)
+    
+    chart.yLabelsFormatter = { CoinData.shared.doubleToMoneyString(double: $1) }
+    chart.xLabels = [30, 25, 20, 15, 10, 5, 0]
+    chart.xLabelsFormatter = { String(Int(round(30 - $1))) + "d" }
+    view.addSubview(chart)
+  }
+  
+  private func renderImage(_ coin: Coin) {
+    let imageXPosition = view.frame.size.width / 2 - imageSize / 2
+    let imageView = UIImageView(frame: CGRect(x: imageXPosition, y: chartHeight, width: imageSize, height: imageSize))
+    imageView.image = coin.image
+    view.addSubview(imageView)
+  }
+  
 }
