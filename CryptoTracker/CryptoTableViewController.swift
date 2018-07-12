@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import LocalAuthentication
 
 private let headerHeight : CGFloat = 100.0
 private let netWorthHeight: CGFloat = 45.0
@@ -17,6 +18,10 @@ class CryptoTableViewController: UITableViewController, CoinDataDelegate {
   override func viewDidLoad() {
     CoinData.shared.delegate = self
     CoinData.shared.getPrices()
+    
+    if LAContext().canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil) {
+      updateSecureButton()
+    }
     
     super.viewDidLoad()
   }
@@ -88,5 +93,24 @@ class CryptoTableViewController: UITableViewController, CoinDataDelegate {
   
   func displayNetWorth() {
     amountLabel.text = CoinData.shared.netWorthAsString()
+  }
+  
+  func updateSecureButton() {
+    let itemText = UserDefaults.standard.bool(forKey: "Secure") ? "Unsecure App" : "SecureApp"
+    
+    navigationItem.rightBarButtonItem = UIBarButtonItem(title: itemText,
+                                                        style: .plain,
+                                                        target: self,
+                                                        action: #selector(secureTapped))
+    
+  }
+  
+  @objc func secureTapped() {
+    if UserDefaults.standard.bool(forKey: "Secure") {
+      UserDefaults.standard.set(false, forKey: "Secure")
+    } else {
+      UserDefaults.standard.set(true, forKey: "Secure")
+    }
+    updateSecureButton()
   }
 }
