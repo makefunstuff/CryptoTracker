@@ -33,6 +33,7 @@ class CoinData {
           }
           guard let price = coinJSON["EUR"] else { fatalError("Could not fetch price") }
           $0.price = price
+          UserDefaults.standard.set(price, forKey: $0.symbol)
           return $0
       }
       self.delegate?.newPrices?()
@@ -93,6 +94,12 @@ class Coin {
     if let image = UIImage(named: symbol.lowercased()) {
       self.image = image
     }
+    self.price = UserDefaults.standard.double(forKey: symbol)
+    self.amount = UserDefaults.standard.double(forKey: symbol + "amount")
+    
+    if let history = UserDefaults.standard.array(forKey: symbol + "history") as? [Double] {
+      self.historicalData = history
+    }
   }
   
   func priceAsString() -> String {
@@ -114,6 +121,7 @@ class Coin {
       self.historicalData = prices.map { $0["close"]! }
       
       CoinData.shared.delegate?.newHistory!()
+      UserDefaults.standard.set(self.historicalData, forKey: self.symbol + "history")
     }
   }
 }
