@@ -39,6 +39,14 @@ class CoinData {
     }
   }
   
+  func netWorthAsString() -> String {
+    let netWorth = coins.reduce(0.0, { (result, coin) in
+      result + (coin.amount * coin.price)
+    })
+    
+    return doubleToMoneyString(double: netWorth)
+  }
+  
   func doubleToMoneyString(double: Double) -> String {
     let formatter = NumberFormatter()
     formatter.locale = Locale(identifier: "fi_FI")
