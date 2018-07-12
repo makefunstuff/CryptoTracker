@@ -39,6 +39,22 @@ class CoinData {
     }
   }
   
+  func html() -> String {
+    var html = "<h1>My Crypto Report</h1>"
+    html += "<h2>Net Worth: \(netWorthAsString())</h2>"
+    html += "<ul>"
+    
+    for coin in coins {
+      if coin.amount != 0.0 {
+        html += "<li>\(coin.symbol) - I own: \(coin.amount). Valued: \(doubleToMoneyString(double: coin.amount * coin.price))</li>"
+      }
+    }
+    
+    html += "</ul>"
+    
+    return html
+  }
+  
   func netWorthAsString() -> String {
     let netWorth = coins.reduce(0.0, { (result, coin) in
       result + (coin.amount * coin.price)

@@ -19,6 +19,11 @@ class CryptoTableViewController: UITableViewController, CoinDataDelegate {
     CoinData.shared.delegate = self
     CoinData.shared.getPrices()
     
+    navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Report",
+                                                       style: .plain,
+                                                       target: self,
+                                                       action: #selector(reportTapped))
+    
     if LAContext().canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil) {
       updateSecureButton()
     }
@@ -112,5 +117,28 @@ class CryptoTableViewController: UITableViewController, CoinDataDelegate {
       UserDefaults.standard.set(true, forKey: "Secure")
     }
     updateSecureButton()
+  }
+  
+  @objc func reportTapped() {
+    let formatter = UIMarkupTextPrintFormatter(markupText: CoinData.shared.html())
+    let renderer = UIPrintPageRenderer()
+    let page = CGRect(x: 0, y: 0, width: 595.2, height: 841.8)
+    let pdfData = NSMutableData()
+    
+    DispatchQueue.main.async {
+      renderer.addPrintFormatter(formatter, startingAtPageAt: 0)
+      renderer.setValue(page, forKey: "paperRect")
+      renderer.setValue(page, forKey: "printableRect")
+      UIGraphicsBeginPDFContextToData(pdfData, .zero, nil)
+      
+      for i in 0..<renderer.numberOfPages {
+        UIGraphicsBeginPDFPage()
+        renderer.drawPage(at: i, in: UIGraphicsGetPDFContextBounds())
+      }
+      UIGraphicsEndPDFContext()
+      
+      let shareViewController = UIActivityViewController(activityItems: [pdfData], applicationActivities: nil)
+      self.present(shareViewController, animated: true, completion: nil)
+    }
   }
 }
